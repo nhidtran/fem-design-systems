@@ -11,7 +11,7 @@ import {
 
 const App = () => {
   const [useDarkTheme, setUseDarktheme] = React.useState(false);
-  console.log("usedarktheme:", useDarkTheme);
+  const [showModal, setShowModal] = React.useState(false);
 
   return (
     <ThemeProvider theme={useDarkTheme ? darkTheme : defaultTheme}>
@@ -20,6 +20,12 @@ const App = () => {
         onClick={() => setUseDarktheme(!useDarkTheme)}
       >
         Toggle theme
+      </button>
+      <button
+        style={{ margin: "0 16px 24px", padding: "8px", background: "none" }}
+        onClick={() => setShowModal(!showModal)}
+      >
+        Toggle Modal
       </button>
       <div
         style={{
@@ -34,7 +40,7 @@ const App = () => {
           justifyContent: "space-around"
         }}
       >
-        <SignUpModal />
+        <SignUpModal showModal={showModal} setShowModal={setShowModal} />
         <GlobalStyle />
       </div>
     </ThemeProvider>
